@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Stats{% endblock %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1c2e4a">
+  <a class="navbar-brand" href="{{ url_for('home') }}"><h1 class="h4">ush.pw</h1></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('stats') }}">Click Counter</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('api_page') }}">API</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+
+  <h1 class="display-4 mt-4">Click Counter</h1>
+  <p>Here you can check how many clicks your shortened link has recieved so far. This site counts all the clicks, even multiple ones from the same device or person.</p>
+  <form action="" method="POST" class="my-3 form-inline">
+      {{ counter.hidden_tag() }}
+      {{counter.short_url(class ="form-control col mr-2 form-control-lg", placeholder = 'Short URL goes here...')}}
+      {{counter.submit_counter(class="btn btn-primary btn-lg")}}
+  </form>
+
+  {% if show_clicks %}
+  <h1 class="display-1 mr-2" style="text-align: center;">{{ clicks }}</h1>
+  <p style="text-align: center;">Is the number of clicks <strong>{{ short_url }}</strong> has recieved so far.</p>
+  {% endif %}
+  {% endblock %}
+</div>

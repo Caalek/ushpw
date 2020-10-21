@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}URL Shortener{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1c2e4a">
+      <a class="navbar-brand" href="{{ url_for('home') }}"><h1 class="h4">ush.pw</h1></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('stats') }}">Click Counter</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('api_page') }}">API</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+<div class="jumbotron jumbotron-fluid text-white" style="background-color: #1c2e4a ;">
+      <h1 class="display-4 mr-2" style="text-align: center;">URL Shortener</h1>
+      <div class="container">
+            <h1 class="h2 mr-2" style="text-align: center;">Random</h1>
+            <p style="text-align: center;">Enter a long URL.</p>
+
+            <form action="" method="POST" class="my-3 form-inline">
+                  {{ random_shorten.hidden_tag() }}
+                  {{random_shorten.long_url(class ="form-control col mr-2 form-control-lg", placeholder = 'Long URL goes here...')}}
+                  {{random_shorten.submit_random(class="btn btn-lg btn-primary")}}
+            </form>
+
+            <h1 class="h2 mr-2" style="text-align: center;">Custom</h1>
+            <p style="text-align: center;">Enter a URL and your own custom text.</p>
+            <form action="" method="POST" class="form-inline">
+                  {{ custom_shorten.hidden_tag() }}
+                  {{ custom_shorten.url(class ="form-control col mr-2 form-control-lg", placeholder = 'URL goes here...')}}
+                  {{ custom_shorten.text(class ="form-control col mr-2 form-control-lg", placeholder = 'Custom text...')}}
+                  {{custom_shorten.submit_custom(class="btn btn-lg btn-primary")}}
+            </form>
+      </div>
+</div>
+{% endblock %}
+
+{% block cards %}
+<div class="container">
+      <p><b>ush.pw</b> is a tool for shortening URL that turns long and messy URLs into short ones, ideal for social media and chat. Simply paste the long URL and click the button. You can even <b>create so called "branded" links </b>(link with your own custom phrase) provided the phrase is not already used for some other link. On top of that, you can also <b>check how many clicks your short link recieved in real time. </b> Finally, there's also a simpe JSON API, if you like to dabble in coding stuff. And it's all for free, no ads or any similar nonsense. Enjoy!</p>
+</div>
+<div class="container" style="text-align: center;">
+      <div class="card-deck">
+            <div class="card mb-4">
+                  <a href="#url">
+                        <img src="{{ url_for('static', filename = 'wheel.png') }}" class="card-img-top" alt="">
+                  </a>
+                  <div class="card-body">
+                        <h5 class="card-title">Customized</h5>
+                        <p class="card-text">Create your own <strong>branded URLs for free</strong>.</p>
+                  </div>
+            </div>
+
+            <div class="card mb-4">
+                  <a href="{{ url_for('stats') }}">
+                        <img src="{{ url_for('static', filename = 'graphbar.png') }}" class="card-img-top" alt="">
+                  </a>
+                  <div class="card-body">
+                        <h5 class="card-title">Click Counter</h5>
+                        <p class="card-text">See how many people clicked on your URL.</p>
+                  </div>
+            </div>
+
+            <div class="card mb-4">
+                  <a href="{{ url_for('api_page') }}">
+                        <img src="{{ url_for('static', filename = 'api.png') }}" class="card-img-top" alt="">
+                  </a>
+            <div class="card-body">
+                  <h5 class="card-title">API</h5>
+                  <p class="card-text">A simple yet powerful API for your own projects.</p>
+            </div>
+</div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}JSON API{% endblock %}
+{% block content %} 
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1c2e4a">
+  <a class="navbar-brand" href="{{ url_for('home') }}"><h1 class="h4">ush.pw</h1></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('stats') }}">Click Counter</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('api_page') }}">API</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+    <h1 class="display-4 mr-2 mt-4">API</h1></h5>
+    <p>An extremely simple web API for shortening URLs. All of the data is returned as JSON. No verification is required to use the API.</p>
+    <h1 class="display-5">random</h1>
+    <p>For random short URLs, use the <code style="color:#0083FF">/api/random/</code> endpoint and provide a <code style="color:#0083FF">url</code> query parameter. For example:</p>
+    <p><code style="color:#0083FF">https://www.ush.pw/api/random/?url=https://www.example.com/a/very/long/url</code></p>
+    <h1 class="h4">example response</h1>
+    <pre>
+        <code>
+          {
+            "clicks": 0, 
+            "code": 200, 
+            "long_url": "https://www.example.com/a/very/long/url", 
+            "short_url": "https://www.ush.pw/eXQ", 
+            "status": "success"
+          }
+        </code>
+    </pre>
+
+    <h1 class="display-5">custom</h1>
+    <p>For random custom URLs, use the <code style="color:#0083FF">/api/custom/</code> endpoint and provide a <code style="color:#0083FF">url</code> query parameter along with a <code style="color:#0083FF">text</code> query parameter. For example:</p>
+    <p><code style="color:#0083FF">https://www.ush.pw/api/custom/?url=https://www.example.com/a/very/long/url&text=sometexthere</code></p>
+    <h1 class="h4">example response</h1>
+    <pre>
+        <code>
+          {
+            "clicks": 0, 
+            "code": 200, 
+            "long_url": "https://www.example.com/a/very/long/url", 
+            "short_url": "https://www.ush.pw/sometexthere", 
+            "status": "success"
+          }
+        </code>
+    </pre>
+
+    <h1 class="display-5">errors</h1>
+    <p>If you:</p>
+    <ul>
+      <li>don't specify the required argument(s)</a></li>
+      <li>specify an invalid URL</li>
+      <li>specify a URL that is blocked</li>
+      <li>specify some custom text that already is taken</li>
+    </ul>
+    <p>You will be greeted by the following error message:</p>
+    <pre>
+      <code>
+        {
+          "message": "error", 
+          "status_code": 404
+        }
+      </code>
+    </pre>
+</div>
+{% endblock %}
