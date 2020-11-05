@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}URL Shortened{% endblock %}
+{% block content %}
+<div class="container">
+  <h1 class="display-5 mt-4">Snippet created</h1>
+  <form action="" class="my-3 form-inline">
+    <input type="text" id="shortURL" class="form-control col mr-2 form form-control-lg" value ="ush.pw/{{ short_id }}" readonly>
+    <button onlick="copyInput()" id="copyBtn" class="btn btn-primary btn-lg">Copy URL</button>
+  </form>
+
+  <p>You can now share your work with others.</p>
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+
+  const shortURL = document.getElementById("shortURL")
+  const copyBtn = document.getElementById("copyBtn")
+
+  copyBtn.onclick = function () {
+    shortURL.select();
+    shortURL.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+  };
+</script>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}URL Shortener{% endblock %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid text-white" style="background-color: #1c2e4a ;">
+      <h1 class="display-4 mr-2" style="text-align: center;">URL Shortener</h1>
+      <div class="container">
+            <h1 class="h2 mr-2" style="text-align: center;">Random</h1>
+            <p style="text-align: center;">Enter a long URL.</p>
+
+            <form method="POST" class="form-inline">
+                  <input name="longUrlRandom" id="longUrlRandom" class="form-control col mr-2 form-control-lg" placeholder = "Long URL goes here...">
+                  <button type="submit" id="submitRandom" class="btn btn-lg btn-primary">Shorten</button>
+            </form>
+
+            <h1 class="h2 mr-2" style="text-align: center;">Custom</h1>
+            <p style="text-align: center;">Enter a URL and your own custom text.</p>
+            <form method="POST" class="form-inline">
+                  <input name="longUrlCustom" id="longUrlCustom" class="form-control col mr-2 form-control-lg" placeholder = "Long URL goes here...">
+                  <input name="textCustom" id="textCustom" class="form-control col mr-2 form-control-lg" placeholder = "Your text here...">
+                  <button type="submit" id="submitCustom" class="btn btn-lg btn-primary">Create Custom URL</button>
+            </form>
+      </div>
+</div>
+{% endblock %}
+
+{% block cards %}
+<div class="container" style="text-align: center;">
+      <div class="card-deck">
+            <div class="card mb-4">
+                  <a href="#url">
+                        <img src="{{ url_for('static', filename = 'wheel.png') }}" class="card-img-top" alt="short url">
+                  </a>
+                  <div class="card-body">
+                        <h3 class="card-title">Short</h5>
+                        <p class="card-text">Nobody likes those long, ugly links. So why not shorten them?</p>
+                  </div>
+            </div>
+            <div class="card mb-4">
+                  <a href="#url">
+                        <img src="{{ url_for('static', filename = 'wheel.png') }}" class="card-img-top" alt="custom url">
+                  </a>
+                  <div class="card-body">
+                        <h3 class="card-title">Custom</h5>
+                        <p class="card-text">Ever wanted a URL with your name on it? Well, now you can have one.</p>
+                  </div>
+            </div>
+
+            <div class="card mb-4">
+                  <a href="{{ url_for('stats') }}">
+                        <img src="{{ url_for('static', filename = 'graphbar.png') }}" class="card-img-top" alt="click counter">
+                  </a>
+                  <div class="card-body">
+                        <h3 class="card-title">Click Counter</h5>
+                        <p class="card-text">And maybe you want to check how many people clicked on it? Well, you can do that too.</p>
+                  </div>
+            </div>
+      </div>
+</div>
+{% endblock %}

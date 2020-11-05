@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}404 Not Found{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="display-5 mt-4" style="text-align: center;">404 Not Found</h1>
+    <p>Looks like you typed in the wrong URL or the link you clicked on doesn't exist. No worries though, just click <a href="{{ url_for('home') }}">here</a> to get to the home page.</p>
+</div>
+{% endblock %}

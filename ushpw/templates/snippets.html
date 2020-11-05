@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Snippets{% endblock %}
+{% block content %}
+<div class="container">
+    <div style="text-align: center;">
+        <h1 class="display-5 mt-4">Create a Text Snippet</h1>
+        <p>Share notes, code snippets, whatever you want.</p>
+    </div>
+    <form method="POST">
+        <div class="form-group">
+            <label for="snippetTitle">Give your snippet a good title:</label>
+            <input name="snippetTitle" class="form-control" id="snippetTitle" place="Title here...">
+        </div>
+        <div class="form-group">
+            <label for="snippetTextArea">Your text down here:</label>
+            <textarea name="snippetTextArea" class="form-control" id="snippetTextArea" rows="10"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="snippetCustomName">If you want a custom link, put your word of choice in here:</label>
+            <input name="snippetCustomName" class="form-control" id="snippetCustomName" place="Custom text here...">
+        </div>
+        <div class="form-group">
+            <button type="submit" class= "btn btn-lg btn-primary">Create Snippet</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

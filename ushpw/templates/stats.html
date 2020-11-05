@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Stats{% endblock %}
+{% block content %}
+  <div class="container">
+    <h1 class="display-5 mt-4" style="text-align: center;">Click Counter</h1>
+    <p style="text-align: center;">Here you can check how many clicks your shortened link has recieved so far. This site counts all the clicks, even multiple ones from the same device or person.</p>
+    <form method="POST" class="my-3 form-inline">
+        <input name="UrlCounter" class= "form-control col mr-2 form-control-lg", placeholder = 'Short URL goes here...'>
+        <button type="submit" id="submitCounter" class ="btn btn-primary btn-lg">Get Amount of Clicks</button>
+    </form>
+
+    {% if show_clicks %}
+    <h1 class="display-1 mr-2" style="text-align: center;">{{ clicks }}</h1>
+    <p style="text-align: center;">Is the number of clicks <strong>{{ short_url }}</strong> has recieved so far.</p>
+    {% endif %}
+  </div>
+  {% endblock %}
